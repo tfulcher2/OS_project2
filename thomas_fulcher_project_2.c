@@ -28,20 +28,23 @@ void *philosopher(void* arg) {
 
     printf("Philosopher %d is thinking.\n", TID[id]);
     sleep(1); //thinking
+    printf("\n");
 
     //try to pick up forks
     printf("Philosopher %d tries to pick up forks %d and %d.\n", TID[id], first, second);
     pthread_mutex_lock(&forks[first]);
     pthread_mutex_lock(&forks[second]);
-
+    printf("\n");
     //eating simulator
     printf("Philosopher %d is eating... (Burst = %d sec)\n", TID[id], burst_time[id]);
     sleep(burst_time[id]);
+    printf("\n");
 
     pthread_mutex_unlock(&forks[first]);
     pthread_mutex_unlock(&forks[second]);
 
     printf("Philosopher %d is done.\n", TID[id]);
+    printf("\n");
 
     return NULL;
 }
